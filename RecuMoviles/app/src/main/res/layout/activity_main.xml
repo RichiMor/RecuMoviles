@@ -15,7 +15,7 @@
         android:layout_marginTop="128dp"
         android:fontFamily="cursive"
         android:gravity="center_horizontal"
-        android:text="Bienvenido\n a\n WorldGallery!"
+        android:text="@string/bienvenido_n_a_n_worldgallery"
         android:textColor="@color/letras"
         android:textSize="60sp"
         android:textStyle="italic"

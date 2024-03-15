@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+
     namespace = "com.example.recumoviles"
     compileSdk = 34
 
@@ -33,6 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
