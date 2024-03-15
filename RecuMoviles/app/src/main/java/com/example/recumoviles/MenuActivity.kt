@@ -27,7 +27,7 @@ class MenuActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_settings -> {
-                    // Abrir la actividad com.example.recumoviles.Ajustes
+                    // Abrir la actividad Ajustes
                     startActivity(Intent(this, Ajustes::class.java))
                     true
                 }
