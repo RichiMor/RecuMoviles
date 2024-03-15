@@ -1,5 +1,6 @@
 package com.example.recumoviles
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.widget.SearchView
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recumoviles.api.UtilidadesApi
 import com.example.recumoviles.modelo.ModeloBuscador
 import com.example.recumoviles.modelo.ModeloImagen
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,10 +26,34 @@ class Galeria : AppCompatActivity() {
     private var pageSize: Int = 30
     private var isLoading by Delegates.notNull<Boolean>()
     private var isLastPage by Delegates.notNull<Boolean>()
-
+    private lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_galeria)
+
+        // Buscar la vista BottomNavigationView
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+
+        // Configurar el listener para el BottomNavigationView
+        bottomNavigationView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_home -> {
+                    startActivity(Intent(this, MenuActivity::class.java))
+                    true
+                }
+                R.id.action_gallery -> {
+
+                    true
+                }
+                R.id.action_settings -> {
+                    // Abrir la actividad Ajustes
+                    startActivity(Intent(this, Ajustes::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+
 
         isLoading = false
         isLastPage = false
