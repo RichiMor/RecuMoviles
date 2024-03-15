@@ -2,6 +2,7 @@ package com.example.recumoviles
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MenuActivity : AppCompatActivity() {
@@ -10,6 +11,14 @@ class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+
+        val textViewToGaleria = findViewById<TextView>(R.id.textViewToGallery)
+
+        textViewToGaleria.setOnClickListener {
+
+            val intent = Intent(this, Galeria::class.java)
+            startActivity(intent)
+        }
 
         // Buscar la vista BottomNavigationView
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
