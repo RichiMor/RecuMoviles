@@ -125,7 +125,7 @@ class Galeria : AppCompatActivity() {
                 if (query != null) {
                     searchData(query)
                 }
-                return false
+                return true //true si ha sido manejado correctamente
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -137,7 +137,7 @@ class Galeria : AppCompatActivity() {
         return true
     }
 
-    private fun searchData(query: String) {
+    fun searchData(query: String) {
         isLoading = true // Actualizar estado de carga
 
         UtilidadesApi.getApiInterface().searchImage(query).enqueue(object : Callback<ModeloBuscador> {
@@ -145,9 +145,9 @@ class Galeria : AppCompatActivity() {
                 isLoading = false // Actualizar estado de carga
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        list.clear()
-                        list.addAll(it.resultados)
-                        adapter.notifyDataSetChanged()
+                        list.clear() // Limpiar la lista existente antes de agregar nuevos datos
+                        list.addAll(it.resultados) // Agregar los datos obtenidos de la API a tu lista original
+                        adapter.notifyDataSetChanged() // Notificar al adaptador que los datos han cambiado
                     }
                 } else {
                     Toast.makeText(this@Galeria, "Failed to retrieve data", Toast.LENGTH_SHORT).show()
@@ -160,4 +160,7 @@ class Galeria : AppCompatActivity() {
             }
         })
     }
+
+
+
 }
